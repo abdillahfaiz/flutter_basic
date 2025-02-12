@@ -1,7 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_list/circular_area/provider/circular_model.dart';
 
 class CircularAreaScreen extends StatefulWidget {
   const CircularAreaScreen({super.key});
@@ -12,9 +12,6 @@ class CircularAreaScreen extends StatefulWidget {
 
 class _CircularAreaScreenState extends State<CircularAreaScreen> {
   final jariJariController = TextEditingController();
-  double result = 0;
-
-  DateTime dateTime = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -51,22 +48,22 @@ class _CircularAreaScreenState extends State<CircularAreaScreen> {
             ),
             ElevatedButton(
               onPressed: () {
-                setState(() {
-                  result = pi *
-                      int.parse(jariJariController.text) *
-                      int.parse(jariJariController.text);
-                });
+                Provider.of<CircularModel>(context, listen: false)
+                    .calculate(double.parse(jariJariController.text));
               },
               child: Text('Hitung'),
             ),
             const SizedBox(
               height: 20.0,
             ),
-            Text('Hasilnya adalah ${result.toStringAsFixed(2)}'),
+            Consumer<CircularModel>(
+              builder: (context, state, child) {
+                return Text('Hasilnya adalah ${state.result}');
+              },
+            ),
             const SizedBox(
               height: 20.0,
             ),
-            
           ],
         ),
       ),
