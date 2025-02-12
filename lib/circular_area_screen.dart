@@ -66,28 +66,7 @@ class _CircularAreaScreenState extends State<CircularAreaScreen> {
             const SizedBox(
               height: 20.0,
             ),
-            ElevatedButton(
-              onPressed: () {
-                showDatePicker(
-                  context: context,
-                  firstDate: DateTime.now(),
-                  lastDate: DateTime(2030),
-                ).then(
-                  (value) {
-                    if (value != null) {
-                      setState(() {
-                        dateTime = value;
-                      });
-                    }
-                  },
-                );
-              },
-              child: Text("Pilih Tanggal"),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            Text('Tanggal Yang kamu pilih \n $dateTime'),
+            
           ],
         ),
       ),
