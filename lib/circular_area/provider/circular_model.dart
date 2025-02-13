@@ -6,7 +6,6 @@ class CircularModel extends ChangeNotifier {
 
   double result = 0;
 
-
   void calculate(double jariJari) {
     result = pi * jariJari * jariJari;
     notifyListeners();
