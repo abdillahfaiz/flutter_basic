@@ -9,46 +9,79 @@ class MenuScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Menu"),
       ),
-      body: Column(
-        children: [
-          InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, '/circular-area');
-            },
-            child: SizedBox(
-              width: double.infinity,
-              height: 100,
-              child: Card(
-                child: Center(
-                  child: Text(
-                    'Penghitung Luas Lingkaran',
-                    textAlign: TextAlign.center,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/circular-area');
+              },
+              child: SizedBox(
+                width: double.infinity,
+                height: 100,
+                child: Card(
+                  child: Center(
+                    child: Text(
+                      'Penghitung Luas Lingkaran',
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 24,
-          ),
-          InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, '/todolist');
-            },
-            child: SizedBox(
-              width: double.infinity,
-              height: 100,
-              child: Card(
-                child: Center(
-                  child: Text(
-                    'Todo List',
-                    textAlign: TextAlign.center,
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/rectangular-area');
+              },
+              child: SizedBox(
+                width: double.infinity,
+                height: 100,
+                child: Card(
+                  child: Center(
+                    child: Text(
+                      'Penghitung Luas Persegi Panjang',
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/todolist');
+              },
+              child: SizedBox(
+                width: double.infinity,
+                height: 100,
+                child: Card(
+                  child: Center(
+                    child: Text(
+                      'Todo List',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/jajar-genjang');
+              },
+              child: SizedBox(
+                width: double.infinity,
+                height: 100,
+                child: Card(
+                  child: Center(
+                    child: Text(
+                      'Penghitung Jajar Genjang',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
