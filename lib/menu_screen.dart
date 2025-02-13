@@ -46,9 +46,6 @@ class MenuScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // SizedBox(
-            //   height: 24,
-            // ),
             InkWell(
               onTap: () {
                 Navigator.pushNamed(context, '/todolist');
@@ -60,6 +57,23 @@ class MenuScreen extends StatelessWidget {
                   child: Center(
                     child: Text(
                       'Todo List',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/jajar-genjang');
+              },
+              child: SizedBox(
+                width: double.infinity,
+                height: 100,
+                child: Card(
+                  child: Center(
+                    child: Text(
+                      'Penghitung Jajar Genjang',
                       textAlign: TextAlign.center,
                     ),
                   ),
