@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TodolistModel extends ChangeNotifier {
-  List<String> todo = ['Dayat', 'Rafi'];
+  List<String> todo = [];
 
   void addData(String data) {
     todo.add(data);

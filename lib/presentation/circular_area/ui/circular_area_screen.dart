@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_list/circular_area/provider/circular_model.dart';
+import 'package:todo_list/presentation/circular_area/provider/circular_model.dart';
 
 class CircularAreaScreen extends StatefulWidget {
   const CircularAreaScreen({super.key});

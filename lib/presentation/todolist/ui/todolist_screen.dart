@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_list/todolist/provider/todolist_model.dart';
+import 'package:todo_list/presentation/todolist/provider/todolist_model.dart';
 
 class TodolistScreen extends StatelessWidget {
   const TodolistScreen({super.key});
