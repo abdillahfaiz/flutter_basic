@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list/presentation/circular_area/provider/circular_model.dart';
 import 'package:todo_list/presentation/circular_area/ui/circular_area_screen.dart';
-import 'package:todo_list/presentation/menu_screen.dart';
 import 'package:todo_list/presentation/products/provider/products_provider.dart';
 import 'package:todo_list/presentation/products/ui/products_screen.dart';
 import 'package:todo_list/presentation/todolist/provider/todolist_model.dart';
 import 'package:todo_list/presentation/todolist/ui/todolist_screen.dart';
 import 'package:todo_list/presentation/users/provider/user_provider.dart';
 import 'package:todo_list/presentation/users/ui/users_screen.dart';
+import 'package:todo_list/presentation/jajargenjang_area/provider/jajargenjang_model.dart';
+import 'package:todo_list/presentation/jajargenjang_area/ui/jajargenjang_area_scree.dart';
+import 'package:todo_list/presentation/menu_screen.dart';
+import 'package:todo_list/presentation/rectangular_area/provider/rectangular_model.dart';
+import 'package:todo_list/presentation/rectangular_area/ui/rectangular_area_screen.dart';
+// import 'package:todo_list/todolist/ui/todolist_screen.dart';
 
 void main() {
   runApp(
@@ -25,6 +30,13 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (context) => UserProvider(),
+        ),
+        ChangeNotifierProvider(
+                    create: (context) => RectangularModel(),
+
+        ),
+        ChangeNotifierProvider(
+          create: (context) => JajargenjangModel(),
         ),
       ],
       child: App(),
@@ -45,6 +57,8 @@ class App extends StatelessWidget {
         '/todolist': (context) => TodolistScreen(),
         '/products': (context) => ProductsScreen(),
         '/users': (context) => UsersScreen(),
+        '/rectangular-area': (context) => RectangularAreaScreen(),
+        '/jajar-genjang': (context) => JajargenjangAreaScreen(),
       },
     );
   }

@@ -31,7 +31,7 @@ class _UsersScreenState extends State<UsersScreen> {
           return ListView.builder(
             itemCount: state.data.length,
             itemBuilder: (context, index) {
-              return ListTile(
+              return ListTile(  
                 leading: Image.network(state.data[index]['avatar']),
                 title: Text(state.data[index]['name']),
                 subtitle: Text(state.data[index]['email']),

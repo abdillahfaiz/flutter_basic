@@ -10,50 +10,56 @@ class TodolistScreen extends StatelessWidget {
     TextEditingController todoController = TextEditingController();
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Todo list"),
-        ),
-        body: Column(children: [
-          TextField(
-            controller: todoController,
-            decoration: InputDecoration(
-              labelText: "Todo",
+      appBar: AppBar(
+        title: Text("Todo list"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: todoController,
+              decoration: InputDecoration(
+                labelText: "Todo",
+              ),
             ),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Provider.of<TodolistModel>(context, listen: false)
-                  .addData(todoController.text);
-              todoController.clear();
-            },
-            child: Text("Save"),
-          ),
-          Consumer<TodolistModel>(
-            builder: (context, state, child) {
-              return SizedBox(
-                height: 700,
-                child: ListView.builder(
-                  itemCount: state.todo.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(state.todo[index]),
-                      onLongPress: () {
-                        Provider.of<TodolistModel>(context, listen: false)
-                            .removeData(index);
-                      },
-                      trailing: IconButton(
-                        onPressed: () {
+            ElevatedButton(
+              onPressed: () {
+                Provider.of<TodolistModel>(context, listen: false)
+                    .addData(todoController.text);
+                todoController.clear();
+              },
+              child: Text("Save"),
+            ),
+            Consumer<TodolistModel>(
+              builder: (context, state, child) {
+                return SizedBox(
+                  height: 400,
+                  child: ListView.builder(
+                    itemCount: state.todo.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(state.todo[index]),
+                        onLongPress: () {
                           Provider.of<TodolistModel>(context, listen: false)
                               .removeData(index);
                         },
-                        icon: Icon(Icons.delete),
-                      ),
-                    );
-                  },
-                ),
-              );
-            },
-          )
-        ]));
+                        trailing: IconButton(
+                          onPressed: () {
+                            Provider.of<TodolistModel>(context, listen: false)
+                                .removeData(index);
+                          },
+                          icon: Icon(Icons.delete),
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
