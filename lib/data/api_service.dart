@@ -31,18 +31,28 @@ class ApiService {
 
   Future<List> getUsers() async {
     try {
-
+      //! Contoh testing succes response
       var response =
           await http.get(Uri.parse('https://api.escuelajs.co/api/v1/users'));
 
+      //! Contoh testing error response yg menampilkan 404
+      // var response =
+      //     await http.get(Uri.parse('https://api.escuelajs.co/api/v1/use3s'));
 
+      //! Contoh testing unhandle response dengan mengganti base url nya
+      // var response =
+      //     await http.get(Uri.parse('https://apiescuelajs.co/api/v1/usres'));
+
+      //? Perkondisian jika response sukses
       if (response.statusCode == 200) {
         return jsonDecode(response.body);
       } else {
+        //! jika response error
         throw Exception(jsonDecode(response.body)['message']);
       }
     } catch (e) {
-      throw Exception('Failed Get Data');
+      //! Revisi, cara pengambilan undhandle error nya seperti ini
+      rethrow;
     }
   }
 }
