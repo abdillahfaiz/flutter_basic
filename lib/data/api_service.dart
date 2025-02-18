@@ -59,6 +59,14 @@ class ApiService {
       var data = jsonDecode(response.body);
 
       if (response.statusCode == 200) {
+        //-----------------------
+        //Kalau resepon nya berupa List<ProductDetail> maka seperti ini cara mengembalikan nilai nya
+
+        // var result = data as List<Map<String, dynamic>>;
+        // return Right(result.map((itemProduct) => ProductDetail.fromJson(itemProduct)).toList());
+        //!! Dan jangan lupa ganti type data Right nya dengan List<ProductDetail> dan type state data ny di ProductProvider
+        //---------------------
+
         return Right(ProductDetail.fromJson(data));
       } else {
         return Left('Gagal Mengambil Data');
