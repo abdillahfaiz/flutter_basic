@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:either_dart/either.dart';
 import 'package:http/http.dart' as http;
+import 'package:todo_list/data/model/product_detail_model.dart';
 
 class ApiService {
   Future<Map<String, dynamic>> getData(int id) async {
@@ -29,30 +31,57 @@ class ApiService {
     }
   }
 
-  Future<List> getUsers() async {
+  Future<Either<String, List>> getUsers() async {
     try {
-      //! Contoh testing succes response
       var response =
-          await http.get(Uri.parse('https://api.escuelajs.co/api/v1/users'));
+          await http.get(Uri.parse('https://apiescuelajs.co/api/v1/usrs'));
 
-      //! Contoh testing error response yg menampilkan 404
-      // var response =
-      //     await http.get(Uri.parse('https://api.escuelajs.co/api/v1/use3s'));
+      var data = jsonDecode(response.body);
 
-      //! Contoh testing unhandle response dengan mengganti base url nya
-      // var response =
-      //     await http.get(Uri.parse('https://apiescuelajs.co/api/v1/usres'));
-
-      //? Perkondisian jika response sukses
       if (response.statusCode == 200) {
-        return jsonDecode(response.body);
+        //? Succes Response
+        return Right(data);
       } else {
-        //! jika response error
-        throw Exception(jsonDecode(response.body)['message']);
+        //! Error response
+        return Left(data['message']);
       }
     } catch (e) {
-      //! Revisi, cara pengambilan undhandle error nya seperti ini
-      rethrow;
+      //! Undhandle Error
+      return Left('Terjadi Kesalahan, Coba lagi');
+    }
+  }
+
+  Future<Either<String, ProductDetail>> getProductDetail() async {
+    try {
+      var response =
+          await http.get(Uri.parse('https://fakestoreapi.com/products/1'));
+
+      var data = jsonDecode(response.body);
+
+      if (response.statusCode == 200) {
+        return Right(ProductDetail.fromJson(data));
+      } else {
+        return Left('Gagal Mengambil Data');
+      }
+    } catch (e) {
+      return Left(e.toString());
     }
   }
 }
+
+// Future<Either<String, List>> getUsers() async {
+//     try {
+//       var response =
+//           await http.get(Uri.parse('https://api.escuelajs.co/api/v1/usrs'));
+
+//       var responseData = jsonDecode(response.body);
+
+//       if (response.statusCode == 200) {
+//         return Right(responseData);
+//       } else {
+//         return Left(responseData['message']);
+//       }
+//     } catch (e) {
+//       return Left(e.toString());
+//     }
+//   }

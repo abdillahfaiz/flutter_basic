@@ -5,6 +5,8 @@ import 'package:todo_list/presentation/circular_area/ui/circular_area_screen.dar
 import 'package:todo_list/presentation/jajargenjang_area/provider/jajargenjang_model.dart';
 import 'package:todo_list/presentation/jajargenjang_area/ui/jajargenjang_area_scree.dart';
 import 'package:todo_list/presentation/menu_screen.dart';
+import 'package:todo_list/presentation/product_detail/provider/product_provider.dart';
+import 'package:todo_list/presentation/product_detail/ui/product_detail_screen.dart';
 import 'package:todo_list/presentation/products/provider/products_provider.dart';
 import 'package:todo_list/presentation/products/ui/products_screen.dart';
 import 'package:todo_list/presentation/rectangular_area/provider/rectangular_model.dart';
@@ -33,6 +35,9 @@ void main() {
         ChangeNotifierProvider(
           create: (context) => JajargenjangModel(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => ProductProvider(),
+        ),
       ],
       child: App(),
     ),
@@ -54,6 +59,7 @@ class App extends StatelessWidget {
         '/users': (context) => UsersScreen(),
         '/rectangular-area': (context) => RectangularAreaScreen(),
         '/jajar-genjang': (context) => JajargenjangAreaScreen(),
+        '/product-detail': (context) => ProductDetailScreen()
       },
     );
   }

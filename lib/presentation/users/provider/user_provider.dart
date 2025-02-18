@@ -6,21 +6,28 @@ class UserProvider extends ChangeNotifier {
   List data = [];
   bool isLoading = false;
   String errorMessage = '';
-  UserModel userData = UserModel();
 
   Future<void> getDataUser() async {
     isLoading = true;
     notifyListeners();
 
-    try {
-      //handle succes response
-      data = await ApiService().getUsers();
-    } catch (e) {
-      // handle error response
-      errorMessage = e.toString();
+    var response = await ApiService().getUsers();
+
+    if (response.isRight) {
+      data = response.right;
+    } else {
+      errorMessage = response.left;
     }
 
     isLoading = false;
     notifyListeners();
   }
 }
+
+// await ApiService().getUsers().then((res) {
+//       if (res.isRight) {
+//         data = res.right;
+//       } else {
+//         errorMessage = res.left;
+//       }
+//     });
